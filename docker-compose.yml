@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  vtn:
+    build: ./vtn
+    ports:
+      - "8080:8080/tcp"
+    depends_on:
+      - "database"
+
+  database:
+    image: 'postgres:11.16'
+    ports:
+      - "5432:5432"
+
+    environment:
+      POSTGRES_USER: ecogy
+      POSTGRES_PASSWORD: ecogy
+      POSTGRES_DB: ecogy_vtn
+
